@@ -17,7 +17,8 @@ public class SceneGenerator : MonoBehaviour {
         Chunk currentChunk = level.chunks[Player.chunkX][Player.chunkY];
         for (int y = 0; y < currentChunk.rooms.Count; y++) {
             for (int x = 0; x < currentChunk.rooms[y].Count; x++) {
-                Instantiate(currentChunk.rooms[y][x].type.prefab, new Vector2(_generateStep.x * x, _generateStep.y * y), Quaternion.identity);
+                GameObject _roomPrefab = Instantiate(currentChunk.rooms[y][x].type.prefab, new Vector2(_generateStep.x * x, _generateStep.y * y), Quaternion.identity);
+                _roomPrefab.GetComponent<RoomOnScene>().room = currentChunk.rooms[y][x];
             }
         }
 

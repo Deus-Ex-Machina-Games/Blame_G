@@ -11,7 +11,10 @@ namespace LevelGenerator {
         public static Foundation[] FOUNDATIONS = {};
 
         public static void LoadFoundations() {
-            FOUNDATIONS = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS").FOUNDATIONS;
+            try {
+                FoundationsScriptable foundations = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS");
+                FOUNDATIONS = foundations.FOUNDATIONS;
+            } catch {}
         }
     }
 
