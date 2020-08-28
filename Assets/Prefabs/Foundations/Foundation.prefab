@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8720906669963160287}
   - component: {fileID: 8720906669963160284}
+  - component: {fileID: 9002400898703276963}
   m_Layer: 0
   m_Name: Foundation
   m_TagString: Untagged
@@ -82,3 +83,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9002400898703276963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720906669963160285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5255b07151fc76f40aae48076de0031f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room:
+    x: 0
+    y: 0
+    type: {fileID: 0}
+    status: 
+    enemies: 0
