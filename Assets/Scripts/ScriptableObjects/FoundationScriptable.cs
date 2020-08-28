@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoundationScriptable : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
+[System.Serializable]
+[CreateAssetMenu(fileName = "Foundation", menuName = "ScriptableObjects/Foundation", order = 1)]
+public class Foundation : ScriptableObject {
+    public string name, symbol;
+    public int chance, brokenChance, minEnemies, maxEnemies;
+    public GameObject prefab;
+}
 
-    }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
+[CreateAssetMenu(fileName = "Foundations", menuName = "ScriptableObjects/Foundations", order = 2)]
+public class FoundationsScriptable : ScriptableObject {
+    public Foundation[] FOUNDATIONS;
 }

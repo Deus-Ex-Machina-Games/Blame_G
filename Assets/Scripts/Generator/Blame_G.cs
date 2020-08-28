@@ -4,16 +4,15 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Transactions;
+using UnityEngine;
 
 namespace LevelGenerator {
     public class Foundations {
-        public static Foundation[] FOUNDATIONS = {
-            new Foundation("Empty", "e", 90, 25, 0, 3),
-            new Foundation("Water", "w", 28, 30, 0, 2),
-            new Foundation("Food", "f", 28, 30, 0, 2),
-            new Foundation("Crafting", "c", 13, 5, 1, 5),
-            new Foundation("Engineer", "i", 5, 10, 0, 1),
-        };
+        public static Foundation[] FOUNDATIONS = {};
+
+        public static void Awake() {
+            FOUNDATIONS = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS").FOUNDATIONS;
+        }
     }
 
     [System.Serializable]
@@ -22,6 +21,7 @@ namespace LevelGenerator {
         public List<List<Chunk>> chunks = new List<List<Chunk>> { };
         
         public Level(int getHeight, int getWidth) {
+            Foundations.Awake();
             height = getHeight; width = getWidth;
         }
 
@@ -50,6 +50,7 @@ namespace LevelGenerator {
         }
     }
 
+    /*
     [System.Serializable]
     public class Foundation {
     	public string name, symbol;
@@ -61,7 +62,8 @@ namespace LevelGenerator {
     		minEnemies = getMinEnemies; maxEnemies = getMaxEnemies;
     	}
     }
-    
+    */
+
     [System.Serializable]
     public class Room {
     	public int x, y;
@@ -78,7 +80,7 @@ namespace LevelGenerator {
 
     [System.Serializable]
     public class Chunk {
-    	public Random random = new Random();
+    	public System.Random random = new System.Random();
     	public int width = 4, height = 3;
     	public List<List<Room>> rooms = new List<List<Room>> {};
         public int x = 0, y = 0;

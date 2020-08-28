@@ -6,12 +6,16 @@ using UnityEngine;
 public class SceneGenerator : MonoBehaviour {
     public static Level level = new Level(2, 8);
 
-    void Start() {
+    private void Awake() {
         level.GenerateLevel();
         print(level.GetLevelString());
     }
 
-    void Update() {
+    private void Start() {
+        
+    }
+
+    private void Update() {
 
     }
 }
