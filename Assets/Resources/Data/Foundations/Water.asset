@@ -18,4 +18,4 @@ MonoBehaviour:
   brokenChance: 30
   minEnemies: 0
   maxEnemies: 2
-  prefab: {fileID: 0}
+  prefab: {fileID: 8192297773482967722, guid: 63f2b883079350340b7f0a55371e2bec, type: 3}

@@ -13,5 +13,5 @@ public class Foundation : ScriptableObject {
 
 [CreateAssetMenu(fileName = "Foundations", menuName = "ScriptableObjects/Foundations", order = 2)]
 public class FoundationsScriptable : ScriptableObject {
-    public Foundation[] FOUNDATIONS;
+    public Foundation[] FOUNDATIONS = { };
 }

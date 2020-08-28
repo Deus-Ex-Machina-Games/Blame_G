@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: FOUNDATIONS
   m_EditorClassIdentifier: Assembly-CSharp::FoundationsScriptable
   FOUNDATIONS:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 12561b10769c75746a0e422133c3da45, type: 2}
+  - {fileID: 11400000, guid: 974b48dab4fc2de43b9ae83f91953238, type: 2}
+  - {fileID: 11400000, guid: 9bff2f4bc008adc4e9bc6ee94534bf13, type: 2}
+  - {fileID: 11400000, guid: 68c6f83ae60ec3141a1b674e0c023e62, type: 2}
+  - {fileID: 11400000, guid: 10076b0dacf09c04281c33c1f983cff6, type: 2}

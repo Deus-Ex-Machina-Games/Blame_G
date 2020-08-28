@@ -10,7 +10,7 @@ namespace LevelGenerator {
     public class Foundations {
         public static Foundation[] FOUNDATIONS = {};
 
-        public static void Awake() {
+        public static void LoadFoundations() {
             FOUNDATIONS = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS").FOUNDATIONS;
         }
     }
@@ -21,7 +21,6 @@ namespace LevelGenerator {
         public List<List<Chunk>> chunks = new List<List<Chunk>> { };
         
         public Level(int getHeight, int getWidth) {
-            Foundations.Awake();
             height = getHeight; width = getWidth;
         }
 
@@ -49,20 +48,6 @@ namespace LevelGenerator {
             return t_string;
         }
     }
-
-    /*
-    [System.Serializable]
-    public class Foundation {
-    	public string name, symbol;
-    	public int chance, brokenChance, minEnemies, maxEnemies;
-    	
-    	public Foundation(string getName, string getSymbol, int getChance, int getBrokenChance, int getMinEnemies = 0, int getMaxEnemies = 2) {
-    		name = getName; symbol = getSymbol;
-    		chance = getChance; brokenChance = getBrokenChance;
-    		minEnemies = getMinEnemies; maxEnemies = getMaxEnemies;
-    	}
-    }
-    */
 
     [System.Serializable]
     public class Room {
