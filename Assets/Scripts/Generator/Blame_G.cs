@@ -11,45 +11,35 @@ namespace LevelGenerator {
         public static Foundation[] FOUNDATIONS = {};
 
         public static void LoadFoundations() {
-            try {
-                FoundationsScriptable foundations = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS");
-                Debug.Log(foundations.FOUNDATIONS[0]);
-                FOUNDATIONS = foundations.FOUNDATIONS;
-            } catch (Exception exception) {
-                Debug.LogWarning(exception);
-            }
+            FoundationsScriptable foundations = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS");
+            Debug.Log(foundations.FOUNDATIONS);
+            FOUNDATIONS = foundations.FOUNDATIONS;
         }
     }
 
     [System.Serializable]
     public class Level {
-        public int x = 0, y = 0, height = 3, width = 8;
-        public List<List<Chunk>> chunks = new List<List<Chunk>> { };
+        public int startID = 0;
+        public Dictionary<int, Chunk> chunks = new Dictionary<int, Chunk> { };
         
-        public Level(int getHeight, int getWidth) {
-            height = getHeight; width = getWidth;
+        public Level(int getStartID) {
+            startID = getStartID;
         }
 
-        public void GenerateLevel() {
-            for (int y = 0; y < height; y++) {
-                chunks.Add(new List<Chunk> { });
-                for (int x = 0; x < width; x++) {
-                    Chunk chunk = new Chunk(16, 16, x, y);
-                    chunks[y].Add(chunk);
-                }
-            }
+        public void GenerateNextChunck() {
+            int nextID = Game.Player.currentID + 1;
+
+            Chunk chunk = new Chunk(16, 4, nextID);
+            chunks.Add(nextID, chunk);
+
+            Game.Player.currentID = nextID;
         }
 
         public string GetLevelString() {
             string t_string = "";
 
-            for (int y = 0; y < chunks.Count; y++) {
-                for (int x = 0; x < chunks[y].Count; x++) {
-                    t_string += $"{chunks[y][x].GetChunkString()}";
-                }
-
-                t_string += "\n";
-            }
+            for (int ID = 0; ID < chunks.Count; ID++)
+                t_string += $"\n{ID} -> {chunks[ID].GetChunkString()}\n\n";
 
             return t_string;
         }
@@ -74,14 +64,14 @@ namespace LevelGenerator {
     	public System.Random random = new System.Random();
     	public int width = 4, height = 3;
     	public List<List<Room>> rooms = new List<List<Room>> {};
-        public int x = 0, y = 0;
+        public int ID = 0;
     	
-    	public Chunk(int getWidth, int getHeight, int getX, int getY) {
+    	public Chunk(int getWidth, int getHeight, int getID) {
     		width = getWidth; height = getHeight;
-            x = getX; y = getY;
-    		// rooms = objects;
-    		
-    		GenerateRooms();
+            ID = getID;
+            // rooms = objects;
+
+            GenerateRooms();
     		GenerateDamage();
     		GenerateEnemies();
     	}
@@ -90,6 +80,7 @@ namespace LevelGenerator {
     		for (int y = 0; y < height; y++) {
     			rooms.Add(new List<Room> {});
         		for (int x = 0; x < width; x++) {
+                    
         			Foundation foundation = Foundations.FOUNDATIONS[random.Next(Foundations.FOUNDATIONS.Length)];
         			int chance = random.Next(100);
         			
