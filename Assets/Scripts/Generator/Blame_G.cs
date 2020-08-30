@@ -9,6 +9,7 @@ using UnityEngine;
 namespace LevelGenerator {
     public class Foundations {
         public static Foundation[] FOUNDATIONS = {};
+        public static int chunkSizeW = 16, chunkSizeH = 4;
 
         public static void LoadFoundations() {
             FoundationsScriptable foundations = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS");
@@ -29,7 +30,7 @@ namespace LevelGenerator {
         public void GenerateNextChunck() {
             int nextID = Game.Player.currentID + 1;
 
-            Chunk chunk = new Chunk(16, 4, nextID);
+            Chunk chunk = new Chunk(Foundations.chunkSizeW, Foundations.chunkSizeH, nextID);
             chunks.Add(nextID, chunk);
 
             Game.Player.currentID = nextID;

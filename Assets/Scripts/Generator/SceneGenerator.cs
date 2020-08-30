@@ -22,6 +22,10 @@ public class SceneGenerator : MonoBehaviour {
             for (int x = 0; x < currentChunk.rooms[y].Count; x++) {
                 GameObject _roomPrefab = Instantiate(currentChunk.rooms[y][x].type.prefab, new Vector2(_generateStep.x * x, _generateStep.y * y), Quaternion.identity, chunkGameObject.transform);
                 _roomPrefab.GetComponent<RoomOnScene>().room = currentChunk.rooms[y][x];
+
+                if (x == 0 ) _roomPrefab.GetComponent<SpriteRenderer>().sprite = currentChunk.rooms[y][x].type.end_left;
+                else if (x == Foundations.chunkSizeW - 1) _roomPrefab.GetComponent<SpriteRenderer>().sprite = currentChunk.rooms[y][x].type.end_right;
+                else _roomPrefab.GetComponent<SpriteRenderer>().sprite = currentChunk.rooms[y][x].type.end_none;
             }
         }
 

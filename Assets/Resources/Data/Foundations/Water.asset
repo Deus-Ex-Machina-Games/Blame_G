@@ -19,3 +19,6 @@ MonoBehaviour:
   minEnemies: 0
   maxEnemies: 2
   prefab: {fileID: 8192297773482967722, guid: 63f2b883079350340b7f0a55371e2bec, type: 3}
+  end_none: {fileID: 21300000, guid: 251d556d42ccc834f8dd111d60586e75, type: 3}
+  end_left: {fileID: 21300000, guid: 97f8315104525914b8e5546942ea941e, type: 3}
+  end_right: {fileID: 21300000, guid: 63061e41c7f177e459bda24f737b1f4b, type: 3}

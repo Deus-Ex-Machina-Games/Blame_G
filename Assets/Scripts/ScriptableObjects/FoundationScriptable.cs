@@ -8,6 +8,11 @@ public class Foundation : ScriptableObject {
     public string name, symbol;
     public int chance, brokenChance, minEnemies, maxEnemies;
     public GameObject prefab;
+
+    [Header("Sprites")]
+    public Sprite end_none;
+    public Sprite end_left;
+    public Sprite end_right;
 }
 
 
