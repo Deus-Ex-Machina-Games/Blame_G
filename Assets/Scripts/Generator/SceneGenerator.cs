@@ -11,10 +11,20 @@ public class SceneGenerator : MonoBehaviour {
     [SerializeField] private GameObject _chunkPrefab = null;
 
     private void Awake() {
-        Foundations.LoadFoundations();
+        GenerateScene();
+    }
 
+    private void Start() {
+
+    }
+
+    private void Update() {
+
+    }
+
+    public void GenerateScene() {
         level.GenerateNextChunck();
-         
+
         GameObject chunkGameObject = Instantiate(_chunkPrefab, new Vector2(0f, 0f), Quaternion.identity);
 
         Chunk currentChunk = level.chunks[Player.currentID];
@@ -23,20 +33,17 @@ public class SceneGenerator : MonoBehaviour {
                 GameObject _roomPrefab = Instantiate(currentChunk.rooms[y][x].type.prefab, new Vector2(_generateStep.x * x, _generateStep.y * y), Quaternion.identity, chunkGameObject.transform);
                 _roomPrefab.GetComponent<RoomOnScene>().room = currentChunk.rooms[y][x];
 
+                /*
                 if (x == 0 ) _roomPrefab.GetComponent<SpriteRenderer>().sprite = currentChunk.rooms[y][x].type.end_left;
                 else if (x == Foundations.chunkSizeW - 1) _roomPrefab.GetComponent<SpriteRenderer>().sprite = currentChunk.rooms[y][x].type.end_right;
                 else _roomPrefab.GetComponent<SpriteRenderer>().sprite = currentChunk.rooms[y][x].type.end_none;
+                */
             }
         }
+        Player.SelectPlayer(Player.currentCharacterID);
+        Instantiate(Player.GetCurrentCharacter().prefab, new Vector2(_generateStep.x * 0, _generateStep.y * Player.currentY), Quaternion.identity);
+
 
         print(level.GetLevelString());
-    }
-
-    private void Start() {
-        
-    }
-
-    private void Update() {
-
     }
 }

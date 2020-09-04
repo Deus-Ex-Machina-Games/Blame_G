@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Killy
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  name: Killy
+  maxHealth: 100
+  maxHunger: 10
+  maxWater: 10
+  inventoryWidth: 8
+  prefab: {fileID: 1860496482279835568, guid: 18223ef80233289429524f96a91488e3, type: 3}

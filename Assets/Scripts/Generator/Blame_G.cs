@@ -8,14 +8,8 @@ using UnityEngine;
 
 namespace LevelGenerator {
     public class Foundations {
-        public static Foundation[] FOUNDATIONS = {};
+        public static Foundation[] FOUNDATIONS = Resources.Load<FoundationsScriptable>("FOUNDATIONS").FOUNDATIONS;
         public static int chunkSizeW = 16, chunkSizeH = 4;
-
-        public static void LoadFoundations() {
-            FoundationsScriptable foundations = Resources.Load<FoundationsScriptable>("Data/FOUNDATIONS");
-            Debug.Log(foundations.FOUNDATIONS);
-            FOUNDATIONS = foundations.FOUNDATIONS;
-        }
     }
 
     [System.Serializable]
