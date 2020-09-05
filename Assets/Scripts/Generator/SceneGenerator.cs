@@ -1,4 +1,4 @@
-using LevelGenerator;
+using Game.LevelGenerator;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
@@ -40,10 +40,8 @@ public class SceneGenerator : MonoBehaviour {
                 */
             }
         }
+
         Player.SelectPlayer(Player.currentCharacterID);
         Instantiate(Player.GetCurrentCharacter().prefab, new Vector2(_generateStep.x * 0, _generateStep.y * Player.currentY), Quaternion.identity);
-
-
-        print(level.GetLevelString());
     }
 }

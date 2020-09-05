@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 using System.Transactions;
 using UnityEngine;
 
-namespace LevelGenerator {
+namespace Game.LevelGenerator {
     public class Foundations {
-        public static Foundation[] FOUNDATIONS = Resources.Load<FoundationsScriptable>("FOUNDATIONS").FOUNDATIONS;
+        public static Foundation[] FOUNDATIONS = Assets.Data.Assets.foundations;
         public static int chunkSizeW = 16, chunkSizeH = 4;
     }
 
@@ -64,6 +64,9 @@ namespace LevelGenerator {
     	public Chunk(int getWidth, int getHeight, int getID) {
     		width = getWidth; height = getHeight;
             ID = getID;
+
+            if (Foundations.FOUNDATIONS == null) return;
+
             // rooms = objects;
 
             GenerateRooms();

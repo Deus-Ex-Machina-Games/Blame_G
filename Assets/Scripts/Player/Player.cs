@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game {
     public class Player {
-        public static Character[] CHARACTERS = Resources.Load<Characters>("CHARACTERS").CHARACTERS;
+        public static Character[] CHARACTERS = Assets.Data.Assets.characters;
 
         public static int currentID = -1;
         public static int currentY = 2;

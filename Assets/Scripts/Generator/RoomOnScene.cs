@@ -1,4 +1,4 @@
-using LevelGenerator;
+using Game.LevelGenerator;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
