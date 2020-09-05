@@ -7,4 +7,5 @@ using UnityEngine;
 public class AssetsScriptableObject : ScriptableObject {
     public Character[] characters = { };
     public Foundation[] foundations = { };
+    public Item[] items = { };
 }

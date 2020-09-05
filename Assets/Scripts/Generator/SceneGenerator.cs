@@ -43,5 +43,8 @@ public class SceneGenerator : MonoBehaviour {
 
         Player.SelectPlayer(Player.currentCharacterID);
         Instantiate(Player.GetCurrentCharacter().prefab, new Vector2(_generateStep.x * 0, _generateStep.y * Player.currentY), Quaternion.identity);
+        Debug.Log(Player.inventory.GetDebugString());
+        Player.inventory.AppendItem("Dominator");
+        Debug.Log(Player.inventory.GetDebugString());
     }
 }
