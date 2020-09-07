@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class UIGame : MonoBehaviour {
     [SerializeField] private UIBar _healthBar = null;
+    [SerializeField] private GameObject _inventoryPanel = null;
     [SerializeField] private UIInventory _playerInventory = null;
     [SerializeField] private UIInventory _playerEquipment = null;
     [SerializeField] private UIInventoryHelper _inventoryHelper = null;
+
+    [Header("BOOLS")]
     private static UIGame _internal;
 
     public static UIGame Internal {
@@ -35,6 +38,10 @@ public class UIGame : MonoBehaviour {
     public void OnClickInventoryItem(UIItemInventory itemInventory) {
         if (!itemInventory.isEmpty)
             _inventoryHelper.ChangeShow(itemInventory, true);
+    }
+
+    public void OnClickInventoryChangeState() {
+        _inventoryPanel.GetComponent<Animator>().SetTrigger("open_t");
     }
 
     public void UpdateInventory() {

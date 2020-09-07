@@ -55,6 +55,10 @@ namespace Game {
 
         }
 
+        public static void Remove(int index) {
+            inventory.RemoveItemByIndex(index);
+        }
+
         public static Character GetCurrentCharacter() {
             return CHARACTERS[currentCharacterID];
         }

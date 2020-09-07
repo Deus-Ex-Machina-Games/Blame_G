@@ -46,6 +46,9 @@ public class SceneGenerator : MonoBehaviour {
         Debug.Log(Player.inventory.GetDebugString());
         Player.inventory.AppendItem("Dominator");
         Player.inventory.AppendItem("GBE");
+        Player.inventory.AppendItem("Head_Max");
+
+        Player.equipment.ChangeItemByIndex(0, "Head_Trash");
         Debug.Log(Player.inventory.GetDebugString());
     }
 }

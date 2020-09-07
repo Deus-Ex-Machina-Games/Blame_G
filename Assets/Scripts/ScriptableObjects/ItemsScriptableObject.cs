@@ -8,6 +8,7 @@ namespace Game.Items {
         Water,
         Health,
         Weapon,
+        Armor,
         Trash,
     };
 
@@ -64,3 +65,10 @@ public class Knife : Weapon {
 public class Gun : Weapon {
     public int ammoCount = 3;
 }
+
+[System.Serializable]
+[CreateAssetMenu(fileName = "Armor", menuName = "ScriptableObjects/Items/Armor", order = 9)]
+public class Armor : Equipment {
+    public float armorCount = 10;
+}
+

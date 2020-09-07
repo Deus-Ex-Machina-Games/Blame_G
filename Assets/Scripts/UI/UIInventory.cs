@@ -13,6 +13,13 @@ public class UIInventory : MonoBehaviour {
         else NewInventory(inventory);
     }
 
+    private void ClearInventory() {
+        for (int i = 0; i < uiInventory.Count; i++)
+            Destroy(uiInventory[i].gameObject);
+
+        uiInventory = new List<UIItemInventory> { };
+    }
+
     private void UpdateInventory(Game.Inventory inventory) {
         for (int i = 0; i < inventory.inventorySize; i++) {
             UIItemInventory itemInventory = uiInventory[i];
@@ -24,6 +31,7 @@ public class UIInventory : MonoBehaviour {
                 itemInventory.isEmpty = true;
             }
 
+            itemInventory.inventory = inventory;
             itemInventory.itemButton.onClick.AddListener(delegate { UIGame.Internal.OnClickInventoryItem(itemInventory); });
         }
     }
@@ -34,14 +42,17 @@ public class UIInventory : MonoBehaviour {
 
             itemInventory.ID = i;
 
-            Item item = Game.Assets.Data.GetItemByName(inventory.items[i]);
-            if (item) itemInventory.SetItem(inventory.items[i], item.sprite);
-            else {
-                itemInventory.SetItem("", _emptyItem);
-                itemInventory.isEmpty = true;
-            }
+            if (i < inventory.items.Count) {
+                Item item = Game.Assets.Data.GetItemByName(inventory.items[i]);
+                if (item) itemInventory.SetItem(inventory.items[i], item.sprite);
+                else {
+                    itemInventory.SetItem("", _emptyItem);
+                    itemInventory.isEmpty = true;
+                }
 
-            itemInventory.itemButton.onClick.AddListener(delegate { UIGame.Internal.OnClickInventoryItem(itemInventory); });
+                itemInventory.inventory = inventory;
+                itemInventory.itemButton.onClick.AddListener(delegate { UIGame.Internal.OnClickInventoryItem(itemInventory); });
+            }
 
             uiInventory.Add(itemInventory);
         }

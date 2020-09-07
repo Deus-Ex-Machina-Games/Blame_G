@@ -8,6 +8,7 @@ public class UIItemInventory : MonoBehaviour {
     [SerializeField] public Text itemName = null;
     [SerializeField] public Image itemImage = null;
     [SerializeField] public Button itemButton = null;
+    [HideInInspector] public Game.Inventory inventory = null;
     [SerializeField] public bool isEmpty = false;
     [SerializeField] public int ID = 0;
 
