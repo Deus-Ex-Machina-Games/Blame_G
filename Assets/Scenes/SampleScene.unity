@@ -330,6 +330,7 @@ MonoBehaviour:
   uiInventory: []
   _uiItemPrefab: {fileID: 1809558905932127337, guid: c42d5217f01ee4949acde0c482f4b976, type: 3}
   _uiContent: {fileID: 777813208}
+  _emptyItem: {fileID: 0}
 --- !u!114 &80685668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2266,6 +2267,7 @@ MonoBehaviour:
   uiInventory: []
   _uiItemPrefab: {fileID: 1809558905932127337, guid: c42d5217f01ee4949acde0c482f4b976, type: 3}
   _uiContent: {fileID: 496709981}
+  _emptyItem: {fileID: 0}
 --- !u!1 &1755633959
 GameObject:
   m_ObjectHideFlags: 0

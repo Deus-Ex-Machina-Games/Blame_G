@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Dominator
+  m_Name: GBE
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   itemType: 3
   equipment: 0
-  name: Dominator
-  chance: 10
-  prefab: {fileID: 7082488195727193048, guid: 755a8d0c9d6410748be52838a9ce3dcd, type: 3}
-  sprite: {fileID: 21300000, guid: 18d60f5d3bfcc5848b6ee73197fd252b, type: 3}
+  name: GBE
+  chance: 1
+  prefab: {fileID: 3187763764676111797, guid: ae570c3634ca9f1448c06965d852c9d5, type: 3}
+  sprite: {fileID: 21300000, guid: 2e58ae612d11ec14892fcf8fcdd40d30, type: 3}
   equipType: 1
   weaponType: 1
-  damage: 10
-  range: 10
-  speed: 10
-  ammoCount: 3
+  damage: 1000
+  range: 100
+  speed: 1
+  ammoCount: 1

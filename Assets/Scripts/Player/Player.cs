@@ -49,6 +49,10 @@ namespace Game {
 
             equipment.ChangeItemByIndex((int)equipType, name);
             inventory.ChangeItemByIndex(index, t_lastItem);
+
+            if (equipType == Game.Items.EquipType.Arm)
+                PlayerController.Internal.SetNewWeapon(Assets.Data.GetWeaponByName(name));
+
         }
 
         public static Character GetCurrentCharacter() {
