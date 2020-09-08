@@ -46,6 +46,8 @@ public class SceneGenerator : MonoBehaviour {
         Player.inventory.AppendItem("Dominator");
         Player.inventory.AppendItem("GBE");
         Player.inventory.AppendItem("Head_Max");
+        Player.inventory.AppendItem("Potato", 20);
+        Player.inventory.AppendItem("Potato", 20);
 
         Player.equipment.ChangeItemByIndex(0, "Head_Trash");
         Debug.Log(Player.inventory.GetDebugString());

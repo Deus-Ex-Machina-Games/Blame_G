@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: GBE
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  itemType: 3
+  itemType: 1
   equipment: 0
+  stackType: 1
   name: GBE
   chance: 1
   prefab: {fileID: 3187763764676111797, guid: ae570c3634ca9f1448c06965d852c9d5, type: 3}

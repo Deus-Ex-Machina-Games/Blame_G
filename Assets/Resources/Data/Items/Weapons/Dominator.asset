@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Dominator
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  itemType: 3
+  itemType: 1
   equipment: 0
+  stackType: 1
   name: Dominator
   chance: 5
   prefab: {fileID: 7082488195727193048, guid: 755a8d0c9d6410748be52838a9ce3dcd, type: 3}

@@ -4,9 +4,7 @@ using UnityEngine;
 
 namespace Game.Items {
     public enum ItemType {
-        Food,
-        Water,
-        Health,
+        Consumable,
         Weapon,
         Armor,
         Trash,
@@ -44,6 +42,14 @@ public abstract class Item : ScriptableObject {
     public int chance = 10;
     public GameObject prefab;
     public Sprite sprite;
+}
+
+[System.Serializable]
+[CreateAssetMenu(fileName = "Consumable", menuName = "ScriptableObjects/Items/Consumable", order = 10)]
+public class Consumable : Item {
+    public float toFood;
+    public float toWater;
+    public float toHealth;
 }
 
 [System.Serializable]

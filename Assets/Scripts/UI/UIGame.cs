@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIGame : MonoBehaviour {
     [SerializeField] private UIBar _healthBar = null;
+    [SerializeField] private UIBar _waterBar = null;
+    [SerializeField] private UIBar _foodBar = null;
     [SerializeField] private GameObject _inventoryPanel = null;
     [SerializeField] private UIInventory _playerInventory = null;
     [SerializeField] private UIInventory _playerEquipment = null;
@@ -33,6 +35,8 @@ public class UIGame : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Minus)) Game.Player.Health--;
         _healthBar.SetVariable(0, Game.Player.GetCurrentCharacter().maxHealth, Game.Player.Health);
+        _waterBar.SetVariable(0, Game.Player.GetCurrentCharacter().maxWater, Game.Player.Water);
+        _foodBar.SetVariable(0, Game.Player.GetCurrentCharacter().maxHunger, Game.Player.Hunger);
     }
 
     public void OnClickInventoryItem(UIItemInventory itemInventory) {

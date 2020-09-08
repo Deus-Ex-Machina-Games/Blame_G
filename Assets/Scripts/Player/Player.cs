@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Game {
     public class Player {
@@ -38,7 +39,7 @@ namespace Game {
         }
 
         public static void Use(int index) {
-            Item item = Assets.Data.GetItemByName(inventory.items[index]);
+            Item item = Assets.Data.GetItemByName(inventory.items[index].name);
 
             if (!item) return;
 
@@ -46,10 +47,21 @@ namespace Game {
                 Equipment equipment = (Equipment)item;
                 Equip(equipment.name, index, equipment.equipType);
             }
+
+            if (item.itemType == Items.ItemType.Consumable) {
+                Consumable consumable = (Consumable)item;
+                Character character = GetCurrentCharacter();
+
+                Health = Mathf.Clamp(Health + consumable.toHealth, 0, character.maxHealth);
+                Hunger = Mathf.Clamp(Hunger + consumable.toFood, 0, character.maxHunger);
+                Water = Mathf.Clamp(Water + consumable.toWater, 0, character.maxWater);
+
+                inventory.RemoveItemByIndex(index, 1);
+            }
         }
 
         public static void Equip(string name, int index, Game.Items.EquipType equipType) {
-            string t_lastItem = equipment.items[(int)equipType];
+            string t_lastItem = equipment.items[(int)equipType].name;
 
             equipment.ChangeItemByIndex((int)equipType, name);
             inventory.ChangeItemByIndex(index, t_lastItem);
@@ -60,7 +72,7 @@ namespace Game {
         }
 
         public static void Remove(int index) {
-            inventory.RemoveItemByIndex(index);
+            inventory.RemoveItemByIndex(index, -1);
         }
 
         public static Character GetCurrentCharacter() {
@@ -73,41 +85,71 @@ namespace Game {
     }
 
     [System.Serializable]
+    public class ItemInventory {
+        public string name;
+        public int count;
+
+        public ItemInventory(string _name, int _count) {
+            name = _name;
+            count = _count;
+        }
+    }
+
+    [System.Serializable]
     public class Inventory {
         public int inventorySize = 1;
-        public List<string> items = new List<string> { };
-        public string itemEmpty = "Empty";
+        public List<ItemInventory> items = new List<ItemInventory> { };
+        public ItemInventory itemEmpty = new ItemInventory("Empty", 0);
         public bool isChanged = false;
 
         public Inventory(int _inventorySize) {
             inventorySize = _inventorySize;
 
             for (int i = 0; i < inventorySize; i++)
-                items.Add(itemEmpty);
+                items.Add(new ItemInventory(itemEmpty.name, itemEmpty.count));
 
             isChanged = true;
         }
 
         public int GetFirstEmptyCell() {
             for (int i = 0; i < items.Count; i++)
-                if (items[i] == itemEmpty) return i;
+                if (items[i].name == itemEmpty.name && items[i].count == itemEmpty.count) return i;
 
             return -1;
         }
 
-        public void AppendItem(string name) {
-            int cell = GetFirstEmptyCell();
-            if (cell != -1) items[cell] = name;
+        public int GetStackIdCell(string name) {
+            Item item = Assets.Data.GetItemByName(name);
+            if (item.stackType == Items.StackType.Stack)
+                for (int i = 0; i < items.Count; i++)
+                    if (items[i].name == name) return i;
+
+            return -1;
+        }
+
+        public void AppendItem(string name, int _count = 1) {
+            int stackCell = GetStackIdCell(name);
+            if (stackCell != -1) {
+                items[stackCell].count += _count;
+            } else {
+                int cell = GetFirstEmptyCell();
+                if (cell != -1) {
+                    items[cell].name = name;
+                    items[cell].count = _count;
+                }
+            }
             isChanged = true;
         }
 
-        public void RemoveItemByIndex(int index) {
-            items[index] = itemEmpty;
+        public void RemoveItemByIndex(int index, int _count = 1) {
+            if (_count == -1 || items[index].count - _count <= 0) items[index] = new ItemInventory(itemEmpty.name, itemEmpty.count);
+            else items[index].count -= _count;
             isChanged = true;
         }
 
-        public void ChangeItemByIndex(int index, string value) {
-            items[index] = value;
+        public void ChangeItemByIndex(int index, string value, int count = 1) {
+            items[index].name = value;
+            items[index].count = count;
             isChanged = true;
         }
 
@@ -115,7 +157,7 @@ namespace Game {
             string t_string = "";
 
             for (int i = 0; i < items.Count; i++)
-                t_string += $"{{ {i}: {items[i]} }},\n";
+                t_string += $"{{ {i}: {{ {items[i].name} : {items[i].count} }} }},\n";
 
             return t_string;
         }

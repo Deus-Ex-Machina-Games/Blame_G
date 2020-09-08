@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Head_Trash
   m_EditorClassIdentifier: Assembly-CSharp::Armor
-  itemType: 4
+  itemType: 2
   equipment: 0
+  stackType: 1
   name: Head_Trash
   chance: 0
   prefab: {fileID: 7395876989482125591, guid: e0b8310afd0fae349b8d27a421dec6db, type: 3}
