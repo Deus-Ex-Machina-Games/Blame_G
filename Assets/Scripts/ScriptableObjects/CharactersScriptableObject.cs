@@ -12,6 +12,8 @@ public class Character : ScriptableObject {
     public float maxHunger = 10.0f;
     public float maxWater = 10.0f;
 
+    public float maxSpeed = 0.5f;
+
     public int inventoryWidth = 12;
 
     public float height = 2.0f;

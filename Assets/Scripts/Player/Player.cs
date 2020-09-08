@@ -11,6 +11,8 @@ namespace Game {
 
         public static int currentCharacterID = 0;
 
+        public static float speed = 10.0f;
+
         public static float Health;
         public static float Hunger;
         public static float Water;
@@ -28,6 +30,8 @@ namespace Game {
             Health = character.maxHealth;
             Hunger = character.maxHunger;
             Water = character.maxWater;
+
+            speed = character.maxSpeed;
 
             inventory = new Inventory(character.inventoryWidth);
             equipment = new Inventory(4); // 0 - Head; 1 - Arms (For weapons); 2 - Body; 3 - Legs; 

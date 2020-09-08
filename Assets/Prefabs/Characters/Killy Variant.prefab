@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2054907671444894567, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f89396d820d4c4a4b97621c1b064110c, type: 2}
     - target: {fileID: 4441993497260231244, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -52,20 +56,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4441993497260231245, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4441993497260231245, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4441993497260231245, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4622648467887784351, guid: 43a86815be4357a4a81d7c29e8312557, type: 3}
     - target: {fileID: 4441993497260231247, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
       propertyPath: m_Name
-      value: Killy
+      value: Killy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580913072616731847, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0021010083
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580913072616731847, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.29814234
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580913072616731847, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0056669437
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580913072616731847, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.109668575
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c5e4c95c18227843b343875767218c4, type: 3}

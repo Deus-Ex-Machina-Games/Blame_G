@@ -16,6 +16,7 @@ MonoBehaviour:
   maxHealth: 100
   maxHunger: 15
   maxWater: 15
+  maxSpeed: 0.25
   inventoryWidth: 8
   height: 2.1
   prefab: {fileID: 1860496482279835568, guid: 18223ef80233289429524f96a91488e3, type: 3}
