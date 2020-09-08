@@ -48,6 +48,14 @@ public class PlayerController : MonoBehaviour {
     public void SetNewWeapon(Weapon weapon) {
         if (_weapon) Destroy(_weapon);
         
-       _weapon = Instantiate(weapon.prefab, _armBone);
+        _weapon = Instantiate(weapon.prefab, _armBone);
+
+        AWeaponBehaviour behaviour = _weapon.GetComponent<AWeaponBehaviour>();
+        behaviour.damage = weapon.damage;
+        behaviour.range = weapon.range;
+        behaviour.speed = weapon.speed;
+
+        if (weapon.weaponType == Game.Items.WeaponType.Gun)
+            behaviour.ammoCount = ((Gun)weapon).ammoCount;
     }
 }

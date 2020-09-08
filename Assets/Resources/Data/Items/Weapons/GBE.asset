@@ -22,5 +22,5 @@ MonoBehaviour:
   weaponType: 1
   damage: 1000
   range: 100
-  speed: 1
-  ammoCount: 1
+  speed: 5
+  ammoCount: 10

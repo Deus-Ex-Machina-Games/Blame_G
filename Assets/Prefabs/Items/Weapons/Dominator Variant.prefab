@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3058609981247119462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082488195727193048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d246cd8267da9f4ab4eea69a442629d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 10
+  speed: 10
+  ammoCount: 10
+  defaultTime: 60
+  isCoolDown: 0
 --- !u!1001 &7357382996602411725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,7 +71,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310926117161347349, guid: 9374f445497780c4595c1369edf307a9, type: 3}
       propertyPath: m_Name
-      value: Dominator
+      value: Dominator Variant
       objectReference: {fileID: 0}
     - target: {fileID: 310926117161347351, guid: 9374f445497780c4595c1369edf307a9, type: 3}
       propertyPath: m_Sprite
@@ -73,3 +91,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9374f445497780c4595c1369edf307a9, type: 3}
+--- !u!1 &7082488195727193048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 310926117161347349, guid: 9374f445497780c4595c1369edf307a9, type: 3}
+  m_PrefabInstance: {fileID: 7357382996602411725}
+  m_PrefabAsset: {fileID: 0}
