@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Gun", menuName = "ScriptableObjects/Items/Gun", order = 8)]
 public class CGun : CWeapon {
     public int ammoCount = 3;
+    public string nameBullet = null;
 }
 

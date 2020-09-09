@@ -9,6 +9,10 @@ public abstract class AWeaponBehaviour : MonoBehaviour {
     public float ammoCount = 10.0f;
     public float defaultTime = 60.0f;
 
+    public float bulletLifeTime = 2.0f;
+    public GameObject bulletPrefab = null;
+    public string bulletName = null;
+
     public virtual void Awake() {
 
     }

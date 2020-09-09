@@ -111,6 +111,20 @@ namespace Game {
             isChanged = true;
         }
 
+        public int GetCountItemsByName(string name) {
+            for (int i = 0; i < items.Count; i++)
+                if (items[i].name == name) return items[i].count;
+
+            return 0;
+        }
+
+        public int GetIndexByName(string name) {
+            for (int i = 0; i < items.Count; i++)
+                if (items[i].name == name) return i;
+
+            return -1;
+        }
+
         public int GetFirstEmptyCell() {
             for (int i = 0; i < items.Count; i++)
                 if (items[i].name == itemEmpty.name && items[i].count == itemEmpty.count) return i;

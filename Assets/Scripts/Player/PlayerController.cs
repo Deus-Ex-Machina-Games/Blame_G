@@ -63,5 +63,13 @@ public class PlayerController : MonoBehaviour {
 
         if (weapon.weaponType == Game.Items.WeaponType.Gun)
             _weaponBeahviour.ammoCount = ((CGun)weapon).ammoCount;
+
+        if (weapon.weaponType == Game.Items.WeaponType.Gun && ((CGun)weapon).nameBullet != "") {
+            CBullet bullet = (CBullet)Game.Assets.Data.GetItemByName(((CGun)weapon).nameBullet);
+
+            _weaponBeahviour.bulletPrefab = bullet.prefab;
+            _weaponBeahviour.bulletName = bullet.name;
+            _weaponBeahviour.bulletLifeTime = bullet.lifeTime;
+        }
     }
 }

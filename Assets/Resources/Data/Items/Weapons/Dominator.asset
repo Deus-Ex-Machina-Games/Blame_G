@@ -25,3 +25,4 @@ MonoBehaviour:
   range: 25
   speed: 0.5
   ammoCount: 3
+  nameBullet: Dominator_Bullet
