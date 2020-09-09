@@ -19,9 +19,6 @@ public class GLaser : AGunBehaviour {
     }
 
     public override void Update() {
-        if (Input.GetKey(KeyCode.F)) Attack();
-        else isShoot = false;
-
         _lineRenderer.enabled = isShoot;
         
         if (!isShoot && _ammoCount < ammoCount) Reload();
@@ -37,7 +34,10 @@ public class GLaser : AGunBehaviour {
         _ammoCount = Mathf.Clamp(_ammoCount, 0, ammoCount);
     }
 
-    public override void Attack() {
+    public override void Attack(bool value) {
+        isShoot = value;
+        if (!isShoot) return;
+
         _ammoCount -= Time.deltaTime * speed;
         _reloadTime = 1 / speed;
 

@@ -33,6 +33,9 @@ public class UIGame : MonoBehaviour {
     void Update() {
         UpdateInventory();
 
+        if (CnControls.CnInputManager.GetButton("Shoot")) PlayerController.Internal.Attack(true);
+        else PlayerController.Internal.Attack(false);
+
         if (Input.GetKeyDown(KeyCode.Minus)) Game.Player.Health--;
         _healthBar.SetVariable(0, Game.Player.GetCurrentCharacter().maxHealth, Game.Player.Health);
         _waterBar.SetVariable(0, Game.Player.GetCurrentCharacter().maxWater, Game.Player.Water);
@@ -47,6 +50,12 @@ public class UIGame : MonoBehaviour {
     public void OnClickInventoryChangeState() {
         _inventoryPanel.GetComponent<Animator>().SetTrigger("open_t");
     }
+
+    public void OnClickShoot() {
+        print("SHOT!");
+        // PlayerController.Internal.Attack();
+    }
+
 
     public void UpdateInventory() {
         if (Game.Player.inventory.isChanged) {

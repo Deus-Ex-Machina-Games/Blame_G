@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject _weapon = null;
+    [SerializeField] public AWeaponBehaviour _weaponBeahviour = null;
     [SerializeField] private Transform _armBone = null;
     [SerializeField] private Animator _animator = null;
 
@@ -33,6 +34,10 @@ public class PlayerController : MonoBehaviour {
         if (isCanMove) Move();
     }
 
+    public void Attack(bool value) {
+        if (_weaponBeahviour) _weaponBeahviour.Attack(value);
+    }
+
     public void Move() {
         float _horizontal = CnControls.CnInputManager.GetAxis("Horizontal");
 
@@ -44,16 +49,19 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void SetNewWeapon(CWeapon weapon) {
-        if (_weapon) Destroy(_weapon);
+        if (_weapon) {
+            Destroy(_weapon);
+            _weaponBeahviour = null;
+        }
         
         _weapon = Instantiate(weapon.prefab, _armBone);
+        _weaponBeahviour = _weapon.GetComponent<AWeaponBehaviour>();
 
-        AWeaponBehaviour behaviour = _weapon.GetComponent<AWeaponBehaviour>();
-        behaviour.damage = weapon.damage;
-        behaviour.range = weapon.range;
-        behaviour.speed = weapon.speed;
+        _weaponBeahviour.damage = weapon.damage;
+        _weaponBeahviour.range = weapon.range;
+        _weaponBeahviour.speed = weapon.speed;
 
         if (weapon.weaponType == Game.Items.WeaponType.Gun)
-            behaviour.ammoCount = ((CGun)weapon).ammoCount;
+            _weaponBeahviour.ammoCount = ((CGun)weapon).ammoCount;
     }
 }

@@ -21,7 +21,7 @@ public abstract class AWeaponBehaviour : MonoBehaviour {
 
     }
 
-    public virtual void Attack() {
+    public virtual void Attack(bool value) {
 
     }
 }

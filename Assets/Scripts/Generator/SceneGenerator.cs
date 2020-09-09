@@ -22,8 +22,6 @@ public class SceneGenerator : MonoBehaviour {
     }
 
     public void GenerateScene() {
-        Debug.LogWarning($"[FOUNDATIONS] {Foundations.FOUNDATIONS.Length}");
-
         level.GenerateNextChunck();
 
         GameObject chunkGameObject = Instantiate(_chunkPrefab, new Vector2(0f, 0f), Quaternion.identity);
@@ -50,6 +48,7 @@ public class SceneGenerator : MonoBehaviour {
         Player.inventory.AppendItem("Head_Max");
         Player.inventory.AppendItem("Potato", 20);
         Player.inventory.AppendItem("Potato", 20);
+        Player.inventory.AppendItem("FAKit", 5);
 
         Player.equipment.ChangeItemByIndex(0, "Head_Trash");
         Debug.Log(Player.inventory.GetDebugString());

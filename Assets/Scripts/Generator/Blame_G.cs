@@ -78,10 +78,9 @@ namespace Game.LevelGenerator {
     		for (int y = 0; y < height; y++) {
     			rooms.Add(new List<Room> {});
         		for (int x = 0; x < width; x++) {
-                    Debug.Log($"[FOUNDATION] {Foundations.FOUNDATIONS[0]}");
                     CFoundation foundation = Foundations.FOUNDATIONS[random.Next(Foundations.FOUNDATIONS.Length)];
         			int chance = random.Next(100);
-                    Debug.Log($"[FOUNDATION] {foundation}");
+
         			if (chance >= foundation.chance)
         				rooms[y].Add(new Room(x, y, Foundations.FOUNDATIONS[0]));
         			else
