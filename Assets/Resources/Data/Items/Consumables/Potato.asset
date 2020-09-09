@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b594eb848dc825d4aa5bbfd52712a1fd, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: Assembly-CSharp::Consumable
   itemType: 0
   equipment: 1
   stackType: 0
   name: Potato
-  chance: 30
+  chance: 25
   prefab: {fileID: 0}
-  sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: 4bc4df1939d750840a6c849a32296205, type: 3}
   toFood: 10
-  toWater: -2
-  toHealth: 5
+  toWater: -0.2
+  toHealth: 1

@@ -5,7 +5,6 @@ using UnityEngine;
 public class GBullet : MonoBehaviour {
     [SerializeField] private GameObject bulletPrefab = null;
 
-
     void Start() {
 
     }

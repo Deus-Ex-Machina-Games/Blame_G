@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 55df7f03ba5a2fe459b097d002234d07, type: 3}
   m_Name: GBE
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   itemType: 1

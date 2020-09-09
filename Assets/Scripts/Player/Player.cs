@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Game {
     public class Player {
-        public static Character[] CHARACTERS = Assets.Data.Assets.characters;
+        public static CCharacter[] CHARACTERS = Assets.Data.Assets.characters;
 
         public static int currentID = -1;
         public static int currentY = 2;
@@ -26,7 +26,7 @@ namespace Game {
                 currentCharacterID = characterID;
             else return;
 
-            Character character = GetCurrentCharacter();
+            CCharacter character = GetCurrentCharacter();
 
             Health = character.maxHealth;
             Hunger = character.maxHunger;
@@ -39,18 +39,18 @@ namespace Game {
         }
 
         public static void Use(int index) {
-            Item item = Assets.Data.GetItemByName(inventory.items[index].name);
+            CItem item = Assets.Data.GetItemByName(inventory.items[index].name);
 
             if (!item) return;
 
             if (item.equipment == Items.Equipment.Equip) {
-                Equipment equipment = (Equipment)item;
+                CEquipment equipment = (CEquipment)item;
                 Equip(equipment.name, index, equipment.equipType);
             }
 
             if (item.itemType == Items.ItemType.Consumable) {
-                Consumable consumable = (Consumable)item;
-                Character character = GetCurrentCharacter();
+                CConsumable consumable = (CConsumable)item;
+                CCharacter character = GetCurrentCharacter();
 
                 Health = Mathf.Clamp(Health + consumable.toHealth, 0, character.maxHealth);
                 Hunger = Mathf.Clamp(Hunger + consumable.toFood, 0, character.maxHunger);
@@ -75,11 +75,11 @@ namespace Game {
             inventory.RemoveItemByIndex(index, -1);
         }
 
-        public static Character GetCurrentCharacter() {
+        public static CCharacter GetCurrentCharacter() {
             return CHARACTERS[currentCharacterID];
         }
 
-        public static Character GetCharacterByIndex(int index) {
+        public static CCharacter GetCharacterByIndex(int index) {
             return CHARACTERS[index];
         }
     }
@@ -119,7 +119,7 @@ namespace Game {
         }
 
         public int GetStackIdCell(string name) {
-            Item item = Assets.Data.GetItemByName(name);
+            CItem item = Assets.Data.GetItemByName(name);
             if (item.stackType == Items.StackType.Stack)
                 for (int i = 0; i < items.Count; i++)
                     if (items[i].name == name) return i;

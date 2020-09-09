@@ -39,13 +39,11 @@ public class PlayerController : MonoBehaviour {
         _animator.SetBool(_moveBoolName, (_horizontal != 0));
         if (_horizontal == 0) return;
 
-
-
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, ((_horizontal > 0) ? 0 : 180), transform.eulerAngles.z);
         transform.position += transform.right * ((_horizontal > 0) ? 1 : -1) * Game.Player.speed * _horizontal * Time.deltaTime;
     }
 
-    public void SetNewWeapon(Weapon weapon) {
+    public void SetNewWeapon(CWeapon weapon) {
         if (_weapon) Destroy(_weapon);
         
         _weapon = Instantiate(weapon.prefab, _armBone);
@@ -56,6 +54,6 @@ public class PlayerController : MonoBehaviour {
         behaviour.speed = weapon.speed;
 
         if (weapon.weaponType == Game.Items.WeaponType.Gun)
-            behaviour.ammoCount = ((Gun)weapon).ammoCount;
+            behaviour.ammoCount = ((CGun)weapon).ammoCount;
     }
 }

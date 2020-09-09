@@ -24,7 +24,7 @@ public class UIInventory : MonoBehaviour {
         for (int i = 0; i < inventory.inventorySize; i++) {
             UIItemInventory itemInventory = uiInventory[i];
 
-            Item item = Game.Assets.Data.GetItemByName(inventory.items[i].name);
+            CItem item = Game.Assets.Data.GetItemByName(inventory.items[i].name);
             if (item) itemInventory.SetItem(inventory.items[i].name, item.sprite, inventory.items[i].count);
             else {
                 itemInventory.SetItem("", _emptyItem);
@@ -43,7 +43,7 @@ public class UIInventory : MonoBehaviour {
             itemInventory.ID = i;
 
             if (i < inventory.items.Count) {
-                Item item = Game.Assets.Data.GetItemByName(inventory.items[i].name);
+                CItem item = Game.Assets.Data.GetItemByName(inventory.items[i].name);
                 if (item) itemInventory.SetItem(inventory.items[i].name, item.sprite, inventory.items[i].count);
                 else {
                     itemInventory.SetItem("", _emptyItem);

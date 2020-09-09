@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Game.LevelGenerator {
     public class Foundations {
-        public static Foundation[] FOUNDATIONS = Assets.Data.Assets.foundations;
+        public static CFoundation[] FOUNDATIONS = Assets.Data.Assets.foundations;
         public static int chunkSizeW = 16, chunkSizeH = 4;
     }
 
@@ -43,11 +43,11 @@ namespace Game.LevelGenerator {
     [System.Serializable]
     public class Room {
     	public int x, y;
-    	public Foundation type;
+    	public CFoundation type;
     	public string status;
     	public int enemies;
     	
-    	public Room(int getX, int getY, Foundation getType) {
+    	public Room(int getX, int getY, CFoundation getType) {
     		x = getX; y = getY;
     		type = getType;
     	}
@@ -78,10 +78,10 @@ namespace Game.LevelGenerator {
     		for (int y = 0; y < height; y++) {
     			rooms.Add(new List<Room> {});
         		for (int x = 0; x < width; x++) {
-                    
-        			Foundation foundation = Foundations.FOUNDATIONS[random.Next(Foundations.FOUNDATIONS.Length)];
+                    Debug.Log($"[FOUNDATION] {Foundations.FOUNDATIONS[0]}");
+                    CFoundation foundation = Foundations.FOUNDATIONS[random.Next(Foundations.FOUNDATIONS.Length)];
         			int chance = random.Next(100);
-        			
+                    Debug.Log($"[FOUNDATION] {foundation}");
         			if (chance >= foundation.chance)
         				rooms[y].Add(new Room(x, y, Foundations.FOUNDATIONS[0]));
         			else

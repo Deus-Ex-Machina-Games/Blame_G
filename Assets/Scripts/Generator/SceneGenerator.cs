@@ -22,6 +22,8 @@ public class SceneGenerator : MonoBehaviour {
     }
 
     public void GenerateScene() {
+        Debug.LogWarning($"[FOUNDATIONS] {Foundations.FOUNDATIONS.Length}");
+
         level.GenerateNextChunck();
 
         GameObject chunkGameObject = Instantiate(_chunkPrefab, new Vector2(0f, 0f), Quaternion.identity);

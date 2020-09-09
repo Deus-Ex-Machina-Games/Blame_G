@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 418579b63435ef14a87b011800ffbfb7, type: 3}
   m_Name: Head_Trash
-  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  m_EditorClassIdentifier: 
   itemType: 2
   equipment: 0
   stackType: 1
   name: Head_Trash
-  chance: 0
-  prefab: {fileID: 7395876989482125591, guid: e0b8310afd0fae349b8d27a421dec6db, type: 3}
-  sprite: {fileID: 21300000, guid: 4bc4df1939d750840a6c849a32296205, type: 3}
+  chance: 10
+  prefab: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6e62e163f8be74c48bb97c70639903f0, type: 3}
   equipType: 0
   armorCount: 0
