@@ -27,6 +27,12 @@ namespace Game.Console {
                         CommandsFunctions.AddItem(_id, _count);
                         DLog("ADDITEM COMPETE", "RESULT");
                         break;
+                    case "damage":
+                        string _parameter = _strings[1];
+                        float _damage = float.Parse(_strings[2]);
+                        CommandsFunctions.PlayerDamage(_parameter, _damage);
+                        DLog("DAMAGE COMPETE", "RESULT");
+                        break;
                     default: break;
                 }
             } catch (Exception exception) {
@@ -39,6 +45,10 @@ namespace Game.Console {
     public class CommandsFunctions {
         public static void AddItem(string id, int count) {
             Game.Player.inventory.AppendItem(id, count);
+        }
+
+        public static void PlayerDamage(string parameter, float damage) {
+            Game.Player.Damage(parameter, damage);
         }
     }
 }

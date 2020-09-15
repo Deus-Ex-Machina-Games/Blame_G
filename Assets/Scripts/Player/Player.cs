@@ -38,6 +38,25 @@ namespace Game {
             equipment = new Inventory(4); // 0 - Head; 1 - Arms (For weapons); 2 - Body; 3 - Legs; 
         }
 
+        public static void DamageHealth(float damage) { Health = Mathf.Clamp(Health - damage, 0, GetCurrentCharacter().maxHealth); }
+        public static void DamageHunger(float damage) { Hunger = Mathf.Clamp(Hunger - damage, 0, GetCurrentCharacter().maxHunger); }
+        public static void DamageWater(float damage) { Water = Mathf.Clamp(Water - damage, 0, GetCurrentCharacter().maxWater); }
+
+        public static void Damage(string name, float damage) {
+            switch (name) {
+                case "health":
+                    DamageHealth(damage);
+                    break;
+                case "hunger":
+                    DamageHunger(damage);
+                    break;
+                case "water":
+                    DamageWater(damage);
+                    break;
+                default: break;
+            }
+        }
+
         public static void Use(int index) {
             CItem item = Assets.Data.GetItemByName(inventory.items[index].name);
 

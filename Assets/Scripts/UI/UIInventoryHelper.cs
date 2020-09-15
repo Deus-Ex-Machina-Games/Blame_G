@@ -23,6 +23,10 @@ public class UIInventoryHelper : MonoBehaviour {
         print(Game.Player.inventory.GetDebugString());
     }
 
+    public void OnHideClick() {
+        ChangeShow(null, false);
+    }
+
     public void OnRemoveClick() {
         Game.Player.Remove(itemInventory.ID);
         ChangeShow(null, false);
