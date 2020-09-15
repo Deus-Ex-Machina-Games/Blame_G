@@ -26,6 +26,10 @@ public class UIGame : MonoBehaviour {
     }
 
     void Start() {
+        Game.Console.DebugConsole.EnterCommand("additem FAKit 1");
+        print(Game.Console.DebugConsole.Log);
+
+
         _playerInventory.GenerateInventoryByInventory(Game.Player.inventory);
         _playerEquipment.GenerateInventoryByInventory(Game.Player.equipment);
     }
@@ -56,6 +60,9 @@ public class UIGame : MonoBehaviour {
         // PlayerController.Internal.Attack();
     }
 
+    public virtual void OnEndEdit_Log(string value) {
+        Debug.Log(value);
+    }
 
     public void UpdateInventory() {
         if (Game.Player.inventory.isChanged) {
