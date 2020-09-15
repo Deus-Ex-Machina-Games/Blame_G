@@ -17,6 +17,6 @@ MonoBehaviour:
   stackType: 0
   name: Dominator_Bullet
   chance: 10
-  prefab: {fileID: 7934919953197672661, guid: c6d6cfb7e76700d4396d77e518b0220f, type: 3}
+  prefab: {fileID: 629678523083186627, guid: c6d6cfb7e76700d4396d77e518b0220f, type: 3}
   sprite: {fileID: 21300000, guid: 3a68cf5e71869da4ca9bd19c78797cf1, type: 3}
   lifeTime: 2

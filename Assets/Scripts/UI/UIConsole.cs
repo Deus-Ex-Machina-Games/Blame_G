@@ -12,6 +12,10 @@ public class UIConsole : MonoBehaviour {
 
     }
 
+    public void OnClickChangeState_Button() {
+        gameObject.GetComponent<Animator>().SetTrigger("open_t");
+    }
+
     void Update() {
         if (_logger.text.Length != Game.Console.DebugConsole.Log.Length) {
             _logger.text += Game.Console.DebugConsole.Log.Substring(_logger.text.Length);

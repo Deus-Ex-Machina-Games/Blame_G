@@ -25,8 +25,10 @@ public class UIInventory : MonoBehaviour {
             UIItemInventory itemInventory = uiInventory[i];
 
             CItem item = Game.Assets.Data.GetItemByName(inventory.items[i].name);
-            if (item) itemInventory.SetItem(inventory.items[i].name, item.sprite, inventory.items[i].count);
-            else {
+            if (item) {
+                itemInventory.SetItem(inventory.items[i].name, item.sprite, inventory.items[i].count);
+                itemInventory.isEmpty = false;
+            }  else {
                 itemInventory.SetItem("", _emptyItem);
                 itemInventory.isEmpty = true;
             }

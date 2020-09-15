@@ -100,8 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 0}
+  _weaponBeahviour: {fileID: 0}
   _armBone: {fileID: 8446454398837277751}
-  _animator: {fileID: 2054907671444894567}
+  animator: {fileID: 0}
+  rigidbody2D: {fileID: 0}
   isCanMove: 1
   _moveBoolName: walk
 --- !u!95 &2054907671444894567
