@@ -50,7 +50,14 @@ public class GLaser : AGunBehaviour {
 
         _lineRenderer.enabled = true;
         RaycastHit2D raycastHit = Physics2D.Raycast(_lineRenderer.transform.position, transform.right, range);
+
+        if (raycastHit && !raycastHit.collider.isTrigger) {
+            EntityController entity = null;
+            raycastHit.collider.TryGetComponent<EntityController>(out entity);
+            if (entity) entity.Damage(damage);
+        }
+
         _lineRenderer.SetPosition(0, _lineRenderer.transform.position);
-        _lineRenderer.SetPosition(1, ((raycastHit) ? raycastHit.point : new Vector2(range, 0)));
+        _lineRenderer.SetPosition(1, ((raycastHit) ? raycastHit.point : new Vector2((PlayerController.Internal.transform.eulerAngles.y == 0) ? 1 : -1 * range, _lineRenderer.transform.position.y)));
     }
 }

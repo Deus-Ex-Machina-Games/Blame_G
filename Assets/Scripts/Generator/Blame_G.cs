@@ -45,12 +45,15 @@ namespace Game.LevelGenerator {
     	public int x, y;
     	public CFoundation type;
     	public string status;
-    	public int enemies;
+    	public List<string> enemies;
     	
     	public Room(int getX, int getY, CFoundation getType) {
     		x = getX; y = getY;
     		type = getType;
-    	}
+
+            enemies = new List<string> { };
+
+        }
     }
     
 
@@ -106,7 +109,16 @@ namespace Game.LevelGenerator {
     		for (int y = 0; y < height; y++) {
         		for (int x = 0; x < width; x++) {
         			int count = random.Next(rooms[y][x].type.minEnemies, rooms[y][x].type.maxEnemies + 1);
-        			if (rooms[y][x].status == "b")	rooms[y][x].enemies = count;
+                    if (rooms[y][x].status == "b") {
+                        for (int i = 0; i < count; i++) {
+                            CEnemy enemy = Game.Assets.Data.Assets.enemies[random.Next(Game.Assets.Data.Assets.enemies.Length)];
+                            Debug.Log(enemy);
+                            int chance = random.Next(100);
+
+                            if (chance >= enemy.chance) rooms[y][x].enemies.Add(enemy.name);
+                            else rooms[y][x].enemies.Add("Simpler");
+                        }
+                    }
         		}
         	}
         }

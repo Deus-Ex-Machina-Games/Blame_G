@@ -5,14 +5,16 @@ using UnityEngine;
 public class ABullet : MonoBehaviour {
     public float damage;
     public float lifeTime;
+    public string tagToIgnore;
 
     private void Awake() {
         
     }
 
-    public void ABulletInit(float _damage, float _lifeTime) {
+    public void ABulletInit(float _damage, float _lifeTime, string _tag) {
         damage = _damage;
         lifeTime = _lifeTime;
+        tagToIgnore = _tag;
 
         StartCoroutine(Life());
     }
@@ -28,6 +30,12 @@ public class ABullet : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (!collision.collider.isTrigger)
-            Dead();
+            if (collision.collider.tag == tagToIgnore) Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+            else {
+                EntityController entity = collision.gameObject.GetComponent<EntityController>();
+                if (entity) entity.Damage(damage);
+
+                Dead();
+            }
     }
 }

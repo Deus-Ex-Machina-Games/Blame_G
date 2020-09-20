@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : EntityController {
     [Header("Objects")]
     [SerializeField] private GameObject _weapon = null;
     [SerializeField] public AWeaponBehaviour _weaponBeahviour = null;
@@ -44,11 +44,11 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R)) _activeAbility.Use();
     }
 
-    public void Attack(bool value) {
+    public override void Attack(bool value) {
         if (_weaponBeahviour) _weaponBeahviour.Attack(value);
     }
 
-    public void Move() {
+    public override void Move() {
         float _horizontal = CnControls.CnInputManager.GetAxis("Horizontal");
 
         animator.SetBool(_moveBoolName, (_horizontal != 0));
@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour {
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, ((_horizontal > 0) ? 0 : 180), transform.eulerAngles.z);
         transform.position += transform.right * ((_horizontal > 0) ? 1 : -1) * Game.Player.speed * _horizontal * Time.deltaTime;
+    }
+
+    public override void Damage(float value) {
+        Game.Player.DamageHealth(value);
     }
 
     public void SetNewWeapon(CWeapon weapon) {

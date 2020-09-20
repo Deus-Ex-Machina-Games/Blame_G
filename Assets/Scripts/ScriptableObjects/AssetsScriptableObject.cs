@@ -8,4 +8,5 @@ public class AssetsScriptableObject : ScriptableObject {
     public CCharacter[] characters = { };
     public CFoundation[] foundations = { };
     public CItem[] items = { };
+    public CEnemy[] enemies = { };
 }

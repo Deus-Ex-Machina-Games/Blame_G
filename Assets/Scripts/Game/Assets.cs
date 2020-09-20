@@ -34,5 +34,16 @@ namespace Game.Assets {
             if (weapon.weaponType == Items.WeaponType.Knife) return (CKnife)weapon;
             return null;
         }
+
+        public static CEntity GetEntityByName(string name) {
+            for (int i = 0; i < Assets.enemies.Length; i++)
+                if (Assets.enemies[i].name == name) return Assets.enemies[i];
+
+            return null;
+        }
+
+        public static CEnemy GetEnemyByName(string name) {
+            return (CEnemy)GetEntityByName(name);
+        }
     }
 }

@@ -53,7 +53,8 @@ public class GBullet : AGunBehaviour {
         GameObject bullet = Instantiate(bulletPrefab, _spawnPoint.position, _spawnPoint.rotation);
         ABullet aBullet = bullet.GetComponent<ABullet>();
 
-        aBullet.ABulletInit(damage, bulletLifeTime);
+        aBullet.ABulletInit(damage, bulletLifeTime, "Player");
+
 
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * speed, ForceMode2D.Impulse);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Character", menuName = "ScriptableObjects/Character", order = 3)]
-public class CCharacter : ScriptableObject {
+public class CCharacter : CEntity {
     public string name;
 
     public float maxHealth = 20.0f;

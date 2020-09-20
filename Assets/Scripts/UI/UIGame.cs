@@ -8,6 +8,7 @@ public class UIGame : MonoBehaviour {
     [SerializeField] private UIBar _waterBar = null;
     [SerializeField] private UIBar _foodBar = null;
     [SerializeField] private GameObject _inventoryPanel = null;
+    [SerializeField] private GameObject _playerControllerPanel = null;
     [SerializeField] private UIInventory _playerInventory = null;
     [SerializeField] private UIInventory _playerEquipment = null;
     [SerializeField] private UIInventoryHelper _inventoryHelper = null;
@@ -53,6 +54,7 @@ public class UIGame : MonoBehaviour {
 
     public void OnClickInventoryChangeState() {
         _inventoryPanel.GetComponent<Animator>().SetTrigger("open_t");
+        _playerControllerPanel.active = !_playerControllerPanel.active;
     }
 
     public void OnClickShoot() {

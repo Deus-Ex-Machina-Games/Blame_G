@@ -33,6 +33,17 @@ namespace Game.Console {
                         CommandsFunctions.PlayerDamage(_parameter, _damage);
                         DLog("DAMAGE COMPETE", "RESULT");
                         break;
+                    case "position":
+                        DLog($"POSITION: {{ X: {PlayerController.Internal.transform.position.x}, Y: {PlayerController.Internal.transform.position.y} }}", "RESULT");
+                        break;
+                    case "spawn":
+                        string _type = _strings[1];
+                        _parameter = _strings[2];
+                        float _x = float.Parse(_strings[3]);
+                        float _y = float.Parse(_strings[4]);
+                        CommandsFunctions.Spawn(_type, _parameter, new Vector2(_x, _y));
+                        DLog("SPAWN COMPETE", "RESULT");
+                        break;
                     default: break;
                 }
             } catch (Exception exception) {
@@ -49,6 +60,16 @@ namespace Game.Console {
 
         public static void PlayerDamage(string parameter, float damage) {
             Game.Player.Damage(parameter, damage);
+        }
+
+        public static void Spawn(string type, string name, Vector2 position) {
+            switch (type) {
+                case "enemy":
+                    SceneGenerator.Internal.GenerateSpawnEnemy(name, position);
+                    break;
+                default: break;
+            }
+            
         }
     }
 }
