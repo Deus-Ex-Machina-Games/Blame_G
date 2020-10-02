@@ -34,7 +34,7 @@ public class SceneGenerator : MonoBehaviour {
         _roomPrefab.GetComponent<RoomOnScene>().room = currentChunk.rooms[_y][_x];
 
         for (int i = 0; i < currentChunk.rooms[_y][_x].enemies.Count; i++)
-            GenerateSpawnEnemy(currentChunk.rooms[_y][_x].enemies[i], new Vector2(_generateStep.x * _x + Random.Range(-0.24f, 0.24f), _generateStep.y * _y + Random.Range(-0.04f, 0.04f)));
+            GenerateSpawnEnemy(currentChunk.rooms[_y][_x].enemies[i], new Vector2(_generateStep.x * _x + Random.Range(-0.24f, 0.24f), _generateStep.y * _y + Random.Range(-0.01f, 0.01f)));
     }
 
     public void GenerateSpawnEnemy(string name, Vector2 position) {

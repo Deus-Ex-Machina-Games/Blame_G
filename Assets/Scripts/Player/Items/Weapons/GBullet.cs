@@ -36,7 +36,6 @@ public class GBullet : AGunBehaviour {
         if (!isShoot) return;
 
         _ammoCount = Game.Player.inventory.GetCountItemsByName(bulletName);
-        print(_ammoCount);
 
         if (_ammoCount > 0 && !isCoolDown) StartCoroutine(IEShoot());
         else isShoot = false;

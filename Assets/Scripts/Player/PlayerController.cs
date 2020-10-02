@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : EntityController {
     [Header("Objects")]
     [SerializeField] private GameObject _weapon = null;
     [SerializeField] public AWeaponBehaviour _weaponBeahviour = null;
     [SerializeField] private Transform _armBone = null;
+    [SerializeField] private Transform _spriteBone = null;
     [SerializeField] public Animator animator = null;
     [SerializeField] public Rigidbody2D rigidbody2D = null;
 
@@ -21,7 +23,16 @@ public class PlayerController : EntityController {
     [SerializeField] private Game.Abilities.AAbility _activeAbility = null;
     [SerializeField] private Game.Abilities.AAbility _passiveAbility = null;
 
+    [Header("LookAt")]
+    [SerializeField] private bool canClick = true;
+    [SerializeField] private Entity _entityLook = null;
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private Ray ray;
+    [SerializeField] private RaycastHit2D hit;
+
     [HideInInspector] private static PlayerController _internal;
+    
+
     public static PlayerController Internal {
         get { return _internal; }
     }
@@ -42,6 +53,60 @@ public class PlayerController : EntityController {
     void Update() {
         if (isCanMove) Move();
         if (Input.GetKeyDown(KeyCode.R)) _activeAbility.Use();
+        UpdateCheckOverlap();
+    }
+
+    public void UpdateCheckOverlap() {
+#if UNITY_ANDROID
+        for (int i = 0; i < Input.touchCount; ++i)
+            if (Input.GetTouch(i).phase.Equals(TouchPhase.Began)) {
+                Entity entity = CheckOverlapEntity(Input.GetTouch(i).position);
+                if (entity) _entityLook = entity;
+            }
+#endif
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        if (Input.GetMouseButtonDown(0)) {
+            Entity entity = CheckOverlapEntity(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            if (entity) _entityLook = entity;
+        }
+#endif
+        OnEnemyLookAt();
+    }
+
+    private Entity CheckOverlapEntity(Vector2 position) {
+        Entity entity = null;
+        Collider2D collider = Physics2D.OverlapPoint(position, layerMask);
+
+        if (!collider) return null;
+
+        if (EventSystem.current.IsPointerOverGameObject()) return null;
+
+        entity = collider.GetComponent<Entity>();
+        if (entity && canClick) {
+            StartCoroutine(CullDown());
+            if (entity != this) return entity;
+        }
+
+        return null;
+    }
+
+#if UNITY_EDITOR
+    void OnDrawGizmos() {
+        // Gizmos.color = Color.green;
+        // Gizmos.DrawSphere(ray.origin, 0.01f);
+    }
+#endif
+
+    public void OnEnemyLookAt() {
+        if (_entityLook) _spriteBone.transform.LookAt2D(_entityLook.transform, _spriteBone.right);
+        else _spriteBone.transform.LookAt2D(transform, _spriteBone.right);
+    }
+
+    IEnumerator CullDown() {
+        canClick = false;
+        yield return new WaitForSeconds(0.1f);
+        canClick = true;
     }
 
     public override void Attack(bool value) {

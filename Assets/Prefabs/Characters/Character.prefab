@@ -102,10 +102,16 @@ MonoBehaviour:
   _weapon: {fileID: 0}
   _weaponBeahviour: {fileID: 0}
   _armBone: {fileID: 8446454398837277751}
+  _spriteBone: {fileID: 4055032853660286646}
   animator: {fileID: 0}
   rigidbody2D: {fileID: 0}
   isCanMove: 1
   _moveBoolName: walk
+  canClick: 1
+  _entityLook: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!95 &2054907671444894567
 Animator:
   serializedVersion: 3
