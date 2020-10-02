@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4622648467887784351, guid: 43a86815be4357a4a81d7c29e8312557, type: 3}
+    - target: {fileID: 4441993497260231245, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e3a0130dc68a1141911e3b933d290c5, type: 2}
     - target: {fileID: 4441993497260231247, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
       propertyPath: m_Name
       value: Killy Variant
@@ -87,5 +91,9 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.109668575
       objectReference: {fileID: 0}
+    - target: {fileID: 8855020461909018412, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 792397806e5562746a70e5e4d58b0d69, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c5e4c95c18227843b343875767218c4, type: 3}
